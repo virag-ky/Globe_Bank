@@ -11,7 +11,7 @@ if(!isset($page_title)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GBI - <?php echo $page_title; ?></title>
-  <link rel="stylesheet" href="../stylesheets/staff.css">
+  <link rel="stylesheet" href="<?php echo url_for('/stylesheets/staff.css'); ?>">
 </head>
 <body>
   <header>
@@ -19,6 +19,6 @@ if(!isset($page_title)) {
   </header>
   <nav>
     <ul>
-      <li><a href="index.php">Menu</a></li>
+      <li><a href="<?php echo url_for('/staff/index.php'); ?>">Menu</a></li>
     </ul>
   </nav>
