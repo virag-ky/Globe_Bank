@@ -30,11 +30,11 @@ $pages = [
         </tr>
         <?php foreach ($pages as $page) { ?>
           <tr>
-          <td><?php echo $page['id']; ?></td>
-          <td><?php echo $page['position']; ?></td>
+          <td><?php echo h($page['id']); ?></td>
+          <td><?php echo h($page['position']); ?></td>
           <td><?php echo $page['visible'] === '1' ? 'true' : 'false'; ?></td>
-          <td><?php echo $page['name']; ?></td>
-          <td><a href="<?php echo url_for("/staff/pages/show.php?id=$page[id]&name=$page[name]"); ?>" class='action'>View</a></td>
+          <td><?php echo h($page['name']); ?></td>
+          <td><a href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id'])) . "&name=" . h(u($page['name']))); ?>" class='action'>View</a></td>
           <td><a href="" class='action'>Edit</a></td>
           <td><a href="" class='action'>Delete</a></td>
         </tr>
