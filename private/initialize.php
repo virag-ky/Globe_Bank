@@ -1,5 +1,7 @@
 <?php
 
+ob_start(); // output buffering is turned on
+
 // Find this file's location and get its directory
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
