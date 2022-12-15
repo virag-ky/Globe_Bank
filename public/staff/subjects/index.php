@@ -1,6 +1,6 @@
-<?php require_once('../../../private/initialize.php'); ?>
+<?php require_once('../../../private/initialize.php');
 
-<?php
+$subject_set = find_all_subjects();
 
 $subjects = [
 [
@@ -48,6 +48,7 @@ $subjects = [
         </tr>
         <?php } ?>
       </table>
+      <!-- <?php mysqli_free_result($subject_set); ?> -->
     </div>
   </div>
 <?php include(SHARED_PATH . '/staff_footer.php'); ?>
