@@ -1,12 +1,6 @@
 <?php require_once('../../../private/initialize.php'); ?>
 <?php
-
-$pages = [
-['id' => '1', 'position' => '1', 'visible' => '1', 'name' => 'Business'],
-['id' => '2', 'position' => '2', 'visible' => '1', 'name' => 'Nature'],
-['id' => '3', 'position' => '3', 'visible' => '1', 'name' => 'IT'],
-['id' => '4', 'position' => '4', 'visible' => '1', 'name' => 'Social']
-]
+$pages_set = find_all_pages();
 ?>
 
 <?php $page_title = 'Pages'; ?>
@@ -21,6 +15,7 @@ $pages = [
       <table class='list'>
         <tr>
           <th>ID</th>
+          <th>Subject ID</th>
           <th>Position</th>
           <th>Visible</th>
           <th>Name</th>
@@ -28,20 +23,22 @@ $pages = [
           <th>&nbsp;</th>
           <th>&nbsp;</th>
         </tr>
-        <?php foreach ($pages as $page) { ?>
+        <?php while ($page = mysqli_fetch_assoc($pages_set)) { ?>
           <tr>
           <td><?php echo h($page['id']); ?></td>
+          <td><?php echo h($page['subject_id']); ?></td>
           <td><?php echo h($page['position']); ?></td>
           <td><?php echo $page['visible'] === '1' ? 'true' : 'false'; ?></td>
-          <td><?php echo h($page['name']); ?></td>
+          <td><?php echo h($page['menu_name']); ?></td>
           <td><a href="<?php echo url_for("/staff/pages/show.php?id=" 
-          . h(u($page['id'])) . "&name=" . h(u($page['name']))); ?>" 
+          . h(u($page['id'])) . "&name=" . h(u($page['menu_name']))); ?>" 
           class='action'>View</a></td>
           <td><a href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($page['id']))); ?>" class='action'>Edit</a></td>
           <td><a href="" class='action'>Delete</a></td>
         </tr>
         <?php } ?>
       </table>
+      <?php mysqli_free_result($pages_set); ?>
     </div>
   </div>
 </div>

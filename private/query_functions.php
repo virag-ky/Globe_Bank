@@ -9,4 +9,13 @@ function find_all_subjects() {
   return $result;
 }
 
+function find_all_pages() {
+  global $db;
+
+  $sql = "SELECT * FROM pages ";
+  $sql .= "ORDER BY subject_id ASC, position ASC";
+  $result = $db->query($sql);
+  return $result;
+}
+
 ?>
