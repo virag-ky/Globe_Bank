@@ -48,7 +48,26 @@ function insert_subject($menu_name, $position, $visible) {
     db_disconnect($db);
     exit;
   }
+}
 
+function update_subject($subject) {
+  global $db;
+
+  $sql = "UPDATE subjects SET ";
+  $sql .= "menu_name='" . $subject['menu_name'] . "',";
+  $sql .= "position='" . $subject['position'] . "',";
+  $sql .= "visible='" . $subject['visible'] . "' ";
+  $sql .= "WHERE id='" . $subject['id'] . "' ";
+
+  $result = $db->query($sql);
+
+  if($result) {
+    return true;
+  } else {
+    echo mysqli_error($db);
+    db_disconnect($db);
+    exit;
+  }
 }
  
 ?>
