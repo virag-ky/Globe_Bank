@@ -16,7 +16,12 @@ if(is_post_request()) {
   $subject['visible'] = $_POST['visible'] ?? '';
 
   $result = update_subject($subject);
-  redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+  if($result === true) {
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+  } else {
+    $errors = $result;
+    var_dump($errors);
+  }
 
 } else {
   $subject = find_subject_by_id($id);
@@ -44,9 +49,6 @@ if(is_post_request()) {
             <?php
             for ($i = 1; $i <= $subject_count; $i++) {
               echo "<option value=\"{$i}\"";
-              if($subject["position"] == $i) {
-                echo " selected";
-              }
               echo ">{$i}</option>";
               }
             ?>
